@@ -7,15 +7,29 @@
 pub fn pop_too_much() -> bool {
     let mut list = vec![3];
 
-    let last = list.pop().unwrap();
+    let last = list.pop();
     println!("The last item in the list is {:?}", last);
 
-    let second_to_last = list.pop().unwrap();
-    println!(
-        "The second-to-last item in the list is {:?}",
-        second_to_last
-    );
-    true
+    match last {
+        Some (a) => {
+            println!(
+                "The second-to-last item in the list is {:?}",
+                last
+            );
+        },
+        None => {}
+    }
+
+    let second_to_last = list.pop();
+    match second_to_last {
+        Some (a) => {
+            println!(
+                "The second-to-last item in the list is {:?}",
+                second_to_last
+            );
+        },
+        None => {}
+    }
 }
 
 #[cfg(test)]
